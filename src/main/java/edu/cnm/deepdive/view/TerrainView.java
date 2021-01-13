@@ -31,7 +31,6 @@ public class TerrainView extends Canvas {
   private PixelWriter writer;
   private boolean bound;
 
-
   @Override
   public boolean isResizable() {
     if (!bound) {
@@ -43,8 +42,8 @@ public class TerrainView extends Canvas {
   }
 
   @Override
-  public void resize(double v, double v1) {
-    super.resize(v, v1);
+  public void resize(double width, double height) {
+    super.resize(width, height);
     if (terrain != null) {
       draw();
     }
@@ -65,6 +64,7 @@ public class TerrainView extends Canvas {
 
   public void setHue(double hue) {
     this.hue = hue;
+    colorsUpdated = false;
   }
 
   public double getSaturation() {
@@ -73,6 +73,7 @@ public class TerrainView extends Canvas {
 
   public void setSaturation(double saturation) {
     this.saturation = saturation;
+    colorsUpdated = false;
   }
 
   public double getNewBrightness() {
@@ -81,6 +82,7 @@ public class TerrainView extends Canvas {
 
   public void setNewBrightness(double newBrightness) {
     this.newBrightness = newBrightness;
+    colorsUpdated = false;
   }
 
   public double getOldBrightness() {
@@ -110,7 +112,6 @@ public class TerrainView extends Canvas {
       context.drawImage(
           buffer, 0, 0, cells.length, cells.length, 0, 0, getWidth(), getHeight());
     }
-
   }
 
   private void updateColors() {

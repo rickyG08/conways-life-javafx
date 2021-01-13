@@ -68,17 +68,17 @@ public class MainController {
     updateDisplay();
   }
 
+  public void stop() {
+    running = false;
+    updater.stop();
+    toggleRun.setDisable(true);
+  }
+
   private void start() {
     running = true;
     toggleRun.setText(resources.getString(STOP_KEY));
     reset.setDisable(true);
     new Runner().start();
-  }
-
-  public void stop() {
-    running = false;
-    updater.stop();
-    toggleRun.setDisable(true);
   }
 
   private void updateDisplay() {
